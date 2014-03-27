@@ -1,5 +1,5 @@
 <paquet
-    prefix="hal"
+    prefix="webpage_from_hal"
     categorie="divers"
     version="1.0.0"
     etat="stable"
