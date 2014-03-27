@@ -1,0 +1,13 @@
+<paquet
+    prefix="hal"
+    categorie="divers"
+    version="1.0.0"
+    etat="stable"
+    compatibilite="[3.0.0-alpha2;["
+    >	
+  
+  <nom>[Hal] Page web chercheur</nom>
+  
+  <licence>CeCILL</licence>
+  
+</paquet>
