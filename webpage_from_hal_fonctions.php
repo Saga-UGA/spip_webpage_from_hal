@@ -14,10 +14,10 @@ function hal_parse($url) {
 
     spip_log(sprintf("[hal_parse] init_http(%s)", $url), _LOG_DEBUG);
     $content = recuperer_page($url);
-    spip_log(sprintf("[hal_parse] init_http(%s): Done"), _LOG_DEBUG);
+    spip_log(sprintf("[hal_parse] init_http(%s): Done", $url), _LOG_DEBUG);
 
     $dom = new DomDocument();
-    $dom->loadHTML($content);
+    @$dom->loadHTML($content);
     
     $tags = $dom->getElementsByTagname("body");
 
