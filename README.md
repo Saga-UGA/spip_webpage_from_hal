@@ -12,6 +12,12 @@ By this modele, Spip get the url and include the html content directly on your b
 
 ## Install ##
 
+### Version ###
+
+Prefer to use the tags `[v1.0.*[` or branch `1.0`. Master is dev version.
+
+### Add to spip ###
+
 To install this plugin please refer to the official [Spip documentation](http://www.spip.net/en_article3475.html)
 
 ## Support ##
