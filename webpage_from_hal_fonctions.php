@@ -16,20 +16,19 @@ function hal_parse($url) {
     $content = recuperer_page($url);
     spip_log(sprintf("[hal_parse] init_http(%s): Done", $url), _LOG_DEBUG);
 
-    $dom = new DomDocument();
-    @$dom->loadHTML($content);
+    $dom = new DomDocument('1.0', 'UTF-8');
+    $str = mb_convert_encoding($content, "HTML-ENTITIES");
+    @$dom->loadHTML($str);
     
-    $tags = $dom->getElementsByTagname("body");
+    $tag = $dom->getElementById("res_script");
 
-    if ($tags->length != 1) {
-        spip_log("No or Many tag body founded ...", _LOG_ERREUR);
+    if  (null === $tag) {
+        spip_log("No tag found ...", _LOG_ERREUR);
 
         return;
     }
 
-    foreach ($tags as $tag) {
-        $halPublis = _DOMinnerHTML($tag);
-    }
+    $halPublis = _DOMinnerHTML($tag);
 
     return $halPublis;
 }
