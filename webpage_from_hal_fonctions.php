@@ -17,29 +17,22 @@ function hal_parse($url) {
     spip_log(sprintf("[hal_parse] init_http(%s): Done", $url), _LOG_DEBUG);
 
     $dom = new DomDocument('1.0', 'UTF-8');
-    $str = mb_convert_encoding($content, "HTML-ENTITIES");
+    $dom->preserveWhiteSpace = false;
+   
+    $str = mb_convert_encoding($content->data, "HTML-ENTITIES");
     @$dom->loadHTML($str);
     
-    $tag = $dom->getElementById("res_script");
-
-    if  (null === $tag) {
+    $xpath = new DOMXpath($dom);
+    $entries = $xpath->query('//div[@id="res_script"]');
+    
+    if ($entries->length == 0) {
         spip_log("No tag found ...", _LOG_ERREUR);
-
         return;
     }
 
-    $halPublis = _DOMinnerHTML($tag);
+    $res_script = $dom->saveXML($entries->item(0));
 
-    return $halPublis;
-}
-
-function _DOMinnerHTML(DOMNode $element) {
-    $innerHTML = ""; 
-    $children  = $element->childNodes;
+    $text = str_replace($matches[0], $res_script, $text);    
     
-    foreach ($children as $child) {
-        $innerHTML .= $element->ownerDocument->saveHTML($child);
-    }
-    
-    return $innerHTML; 
+    return $text;
 }
