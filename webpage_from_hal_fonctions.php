@@ -19,7 +19,7 @@ function hal_parse($url) {
     $dom = new DomDocument('1.0', 'UTF-8');
     $dom->preserveWhiteSpace = false;
    
-    $str = mb_convert_encoding($content->data, "HTML-ENTITIES");
+    $str = mb_convert_encoding($content, "HTML-ENTITIES");
     @$dom->loadHTML($str);
     
     $xpath = new DOMXpath($dom);
