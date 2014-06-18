@@ -30,9 +30,7 @@ function hal_parse($url) {
         return;
     }
 
-    $res_script = $dom->saveXML($entries->item(0));
-
-    $text = str_replace($matches[0], $res_script, $text);    
+    $res_script = $dom->saveXML($entries->item(0));  
     
-    return $text;
+    return $res_script;
 }
