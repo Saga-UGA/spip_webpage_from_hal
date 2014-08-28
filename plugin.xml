@@ -1,0 +1,8 @@
+<plugin>
+  <nom>[Hal] Page web chercheur</nom>
+  <version>1.0.0</version>
+  <prefix>webpage_from_hal</prefix>
+  <etat>stable</etat>
+  <necessite id="SPIP" version="[2.1;]"/>
+  <fonctions>webpage_from_hal_fonctions.php</fonctions>
+</plugin>
